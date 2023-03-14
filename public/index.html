@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>pixel.vukky.net</title>
+        <title>pixel8.vukky.net</title>
         <meta name="robots" content="noindex">
         <style>
             .icon {
                 image-rendering: pixelated;
                 cursor: pointer;
             }
+            textarea {
+                resize: none;
+            }
         </style>
+        <script src="/pixel8.js" defer></script>
     </head>
     <body>
         <h1>pixel8<small style="font-size: 12px;">.vukky.net</small></h1>
@@ -33,9 +37,8 @@
         <h2><i class="p8-fatcow-32 p8-script_link"></i> Script</h2>
         <p><i class="p8-fatcow-16 p8-html"></i> You can use the pixel8 script to automatically insert icons from HTML tags.<br><i class="p8-fugue p8-clipboard-block"></i> These tags can be copied by clicking on the icons you've searched for.</p>
         <p><b>Please remember to follow the respective pack's license when using icons.</b></p>
-        <p><i class="p8-fugue p8-download-cloud"></i> To use the pixel8 script, place <code>&lt;script src="https://cdn.jsdelivr.net/gh/vukkyy/pixel/public/pixel8.js"&gt;</script></code> at the bottom of your &lt;body&gt;.<br><i class="p8-fugue p8-tick"></i> Any &lt;i&gt; tags you've copied from pixel8 should load automatically after you have added the script.<br><i class="p8-fatcow-16 p8-internet_explorer"></i> It is not supported on very old browsers like IE and Chrome 44 or below. Please download icons manually if this is required.</p>
+        <p><i class="p8-fugue p8-download-cloud"></i> To use the pixel8 script, place <textarea rows="1" cols="78"><script defer src="https://cdn.jsdelivr.net/gh/vukkyy/pixel/public/pixel8.js"></script></textarea> in your &lt;head&gt;.<br><i class="p8-fugue p8-tick"></i> Any &lt;i&gt; tags you've copied from pixel8 should load automatically after you have added the script.<br><i class="p8-fatcow-16 p8-internet_explorer"></i> It is not supported on very old browsers like IE and Chrome 44 or below. Please download icons manually if this is required.</p>
 
-        <script src="/pixel8.js"></script>
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="https://unpkg.com/tippy.js@6"></script>
         <script src="//unpkg.com/string-similarity/umd/string-similarity.min.js"></script>

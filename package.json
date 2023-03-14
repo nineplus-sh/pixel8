@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vukkyy/pixel.git"
+    "url": "git+https://github.com/vukkysoft/pixel.git"
   },
   "author": "Vukky",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/Vukkyy/pixel/issues"
+    "url": "https://github.com/vukkysoft/pixel/issues"
   },
-  "homepage": "https://github.com/Vukkyy/pixel#readme",
+  "homepage": "https://github.com/vukkysoft/pixel#readme",
   "dependencies": {
     "glob": "^9.2.1"
   }

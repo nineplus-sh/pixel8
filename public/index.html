@@ -2,31 +2,6 @@
 <html>
     <head>
         <title>pixel.vukky.net</title>
-        <script src="//unpkg.com/string-similarity/umd/string-similarity.min.js"></script>
-        <script>
-            let iconArray;
-            async function fetchIcons() {
-                iconArray = await fetch("/assets/icons.json").then(res => res.json());
-            }
-            function findIcon(searchName) {
-                let resultArray = [];
-                iconArray.forEach(icon => {
-                    let similarityScore = stringSimilarity.compareTwoStrings(icon.name.toLowerCase(), searchName.toLowerCase())
-                    resultArray.push({ name: icon.name, path: icon.path, score: similarityScore })
-                })
-                resultArray.sort((a, b) => b.score - a.score);
-                return resultArray.slice(0, 100)
-            }
-            function showIcon(searchName) {
-                let results = findIcon(searchName);
-                let resultString = "";
-                results.forEach((result, index) => {
-                    if (result.score > 0.2) resultString += `<img src="${result.path}" title="${result.name} (certainty: ${(result.score * 100).toFixed(2)}%)">`
-                })
-                document.querySelector("#rawr").innerHTML = resultString || "3:";
-            }
-            fetchIcons();
-        </script>
     </head>
     <body>
         <h1>pixel.vukky.net</h1>
@@ -37,11 +12,44 @@
         <span id="rawr"></span>
 
         <h2>Licensing</h2>
-        <p>This project uses icons from the following icon packs. As the project is not complete, please use inspect element to determine which pack your icon came from.<br>Please note that I am not affiliated with these websites.</p>
+        <p>This project uses icons from the following icon packs.<br>Please note that I am not affiliated with these websites.</p>
         <ul>
-            <li><a href="https://p.yusukekamiyamane.com/">Fugue by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> (no-attribution license available for <a href="https://p.yusukekamiyamane.com/icons/license/">$69.95 USD</a>)</a></li>
-            <li><a href="https://p.yusukekamiyamane.com/">Diagona by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> (no-attribution license available for <a href="https://p.yusukekamiyamane.com/icons/license/">$9.95 USD</a>)</a></li>
-            <li><a href="https://www.fatcow.com/free-icons">"Farm-Fresh Web Icons" by FatCow</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/us/">CC BY 3.0 US</a></a></li>
+            <li><a href="https://p.yusukekamiyamane.com/">Fugue 3.5.6 by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> (no-attribution license available for <a href="https://p.yusukekamiyamane.com/icons/license/">$69.95 USD</a>)</a></li>
+            <li><a href="https://p.yusukekamiyamane.com/">Diagona 1.0.0 by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> (no-attribution license available for <a href="https://p.yusukekamiyamane.com/icons/license/">$9.95 USD</a>)</a></li>
+            <li><a href="https://www.fatcow.com/free-icons">"Farm-Fresh Web Icons" 3.9.2 by FatCow</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/us/">CC BY 3.0 US</a></a></li>
         </ul>
+
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
+        <script src="https://unpkg.com/tippy.js@6"></script>
+        <script src="//unpkg.com/string-similarity/umd/string-similarity.min.js"></script>
+        <script>
+            tippy.delegate("body", {
+                "target": ".icon",
+                "allowHTML": true
+            })
+
+            let iconArray;
+            async function fetchIcons() {
+                iconArray = await fetch("/assets/icons.json").then(res => res.json());
+            }
+            function findIcon(searchName) {
+                let resultArray = [];
+                iconArray.forEach(icon => {
+                    let similarityScore = stringSimilarity.compareTwoStrings(icon.name.toLowerCase(), searchName.toLowerCase())
+                    resultArray.push({ name: icon.name, path: icon.path, pack: icon.pack, score: similarityScore })
+                })
+                resultArray.sort((a, b) => b.score - a.score);
+                return resultArray.slice(0, 100)
+            }
+            function showIcon(searchName) {
+                let results = findIcon(searchName);
+                let resultString = "";
+                results.forEach((result, index) => {
+                    if (result.score > 0.2) resultString += `<img class="icon" src="${result.path}" data-tippy-content="<b>${result.name}</b> (${result.pack})">`
+                })
+                document.querySelector("#rawr").innerHTML = resultString || "<i>No icon could be found for your search. Try being more specific, or search something similar.</i>";
+            }
+            fetchIcons();
+        </script>
     </body>
 </html>

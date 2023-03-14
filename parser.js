@@ -5,7 +5,7 @@ async function getIcons() {
     const icons = await glob('public/assets/icons/**/*.{png,gif}');
     const parsedIcons = [];
     icons.forEach(icon => {
-        parsedIcons.push({"path":icon.split("public/")[1],"name":path.parse(icon).name});
+        parsedIcons.push({"path":icon.split("public/")[1],"name":path.parse(icon).name,"pack":icon.split("public/")[1].split("/icons/")[1].split("/")[0]});
     });
 
     fs.writeFileSync("public/assets/icons.json", JSON.stringify(parsedIcons))

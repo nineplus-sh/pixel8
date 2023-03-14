@@ -6,18 +6,19 @@
         <style>
             .icon {
                 image-rendering: pixelated;
+                cursor: pointer;
             }
         </style>
     </head>
     <body>
         <h1>pixel8<small style="font-size: 12px;">.vukky.net</small></h1>
         <p><i class="p8-fugue p8-image-share"></i> I got tired of searching for pixel icons online, so this is a simple search tool that combines various icon packs into one search.</p>
-        <p><b><img src="assets/icons/fatcow-16/image_link.png" class="icon" data-tippy-content="<img src='assets/icons/fatcow-16/image_link.png' class='icon' width='32'> <b>image_link</b> (fatcow-16)"> Do not hotlink these icons. Please download them yourself.<br><img src="assets/icons/fatcow-16/emotion_shocked.png" class="icon" data-tippy-content="<img src='assets/icons/fatcow-16/emotion_shocked.png' class='icon' width='32'> <b>emotion_shocked</b> (fatcow-16)"> Also, some icons may be offensive or inappropiate.</b></p>
-        <img src="assets/icons/fatcow-16/report_magnify.png" class="icon" data-tippy-content="<img src='assets/icons/fatcow-16/report_magnify.png' class='icon' width='32'> <b>report_magnify</b> (fatcow-16)"> Search the library: <input id="search" value="Loading..." oninput="showIcon(this.value)" disabled><br><br>
-        <img src="assets/icons/fugue/eye--arrow.png" class="icon" data-tippy-content="<img src='assets/icons/fugue/eye--arrow.png' class='icon' width='32'> <b>eye--arrow</b> (fugue)"> See your results: <span id="rawr"></span>
+        <p><b><i class="p8-fatcow-16 p8-image_link"></i> Do not hotlink these icons. Please download them yourself.<br><i class="p8-fatcow-16 p8-emotion_shocked"></i> Also, some icons may be offensive or inappropiate.</b></p>
+        <i class="p8-fatcow-16 p8-report_magnify"></i> Search the library: <input id="search" value="Loading..." oninput="showIcon(this.value)" disabled><br><br>
+        <i class="p8-fugue p8-eye--arrow"></i> See your results: <span id="rawr"></span>
 
-        <h2><img src="assets/icons/fatcow-32/books.png" class="icon" data-tippy-content="<img src='assets/icons/fatcow-32/books.png' class='icon' width='32'> <b>books</b> (fatcow-32)"> Licensing</h2>
-        <p>This project uses icons from the following icon packs.<br>Please note that I am not affiliated with these websites.</p>
+        <h2><i class="p8-fatcow-32 p8-books"></i> Licensing</h2>
+        <p>This project uses icons from the following icon packs.<br>Please note that I am not affiliated with these websites.<br><b>When you use an icon, you must follow the licenses below for the respective pack.</b></p>
         <ul>
             <li><a href="https://p.yusukekamiyamane.com/">Fugue 3.5.6 by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> (no-attribution license available for <a href="https://p.yusukekamiyamane.com/icons/license/">$69.95 USD</a>)</li>
             <li><a href="https://p.yusukekamiyamane.com/">Diagona 1.0.0 by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> (no-attribution license available for <a href="https://p.yusukekamiyamane.com/icons/license/">$9.95 USD</a>)</li>
@@ -29,8 +30,10 @@
             <li><a href="https://github.com/damieng/silk-companion">Silk-Companion by Damien Guard</a>, based on Silk by Mark James, licensed under <a href="https://creativecommons.org/licenses/by/2.5/">CC BY 2.5</a> and <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
         </ul>
 
-        <h2>Scwipt OwO</h2>
-        <p>Nyowo.</p>
+        <h2><i class="p8-fatcow-32 p8-script_link"></i> Script</h2>
+        <p><i class="p8-fatcow-16 p8-html"></i> You can use the pixel8 script to automatically insert icons from HTML tags.<br><i class="p8-fugue p8-clipboard-block"></i> These tags can be copied by clicking on the icons you've searched for.</p>
+        <p><b>Please remember to follow the respective pack's license when using icons.</b></p>
+        <p><i class="p8-fugue p8-download-cloud"></i> To use the pixel8 script, place <code>&lt;script src="https://cdn.jsdelivr.net/gh/vukkyy/pixel/public/pixel8.js"&gt;</script></code> at the bottom of your &lt;body&gt;.<br><i class="p8-fugue p8-tick"></i> Any &lt;i&gt; tags you've copied from pixel8 should load automatically after you have added the script.<br><i class="p8-fatcow-16 p8-internet_explorer"></i> It is not supported on very old browsers like IE and Chrome 44 or below. Please download icons manually if this is required.</p>
 
         <script src="/pixel8.js"></script>
         <script src="https://unpkg.com/@popperjs/core@2"></script>
@@ -62,10 +65,14 @@
                 let results = findIcon(searchName);
                 let resultString = "";
                 results.forEach((result, index) => {
-                    if (result.score > 0.2) resultString += `<img class="icon" src="${result.path}" data-tippy-content="<img src='${result.path}' class='icon' width='32'> <b>${result.name}</b> (${result.pack})">`
+                    if (result.score > 0.2) resultString += `<img class="icon" src="${result.path}" onclick="copyToClipboard('${result.pack}', '${result.name}')" data-tippy-content="<img src='${result.path}' class='icon' width='32'> <b>${result.name}</b> (${result.pack})">`
                 })
                 document.querySelector("#rawr").innerHTML = resultString || "<i>No icon could be found for your search. Try being more specific, or search something similar.</i>";
                 tippy.hideAll();
+            }
+            function copyToClipboard(iconPack, iconName) {
+                navigator.clipboard.writeText(`<i class="p8-${iconPack} p8-${iconName}"></i>`);
+                alert("Copied HTML to the clipboard. You can use this with the pixel8 script.");
             }
             fetchIcons();
 

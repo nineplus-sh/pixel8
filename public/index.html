@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>pixel.vukky.net</title>
+        <script src="//unpkg.com/string-similarity/umd/string-similarity.min.js"></script>
+        <script>
+            let iconArray;
+            async function fetchIcons() {
+                iconArray = await fetch("/assets/icons.json").then(res => res.json());
+            }
+            function findIcon(searchName) {
+                let resultArray = [];
+                iconArray.forEach(icon => {
+                    let similarityScore = stringSimilarity.compareTwoStrings(icon.name.toLowerCase(), searchName.toLowerCase())
+                    resultArray.push({ name: icon.name, path: icon.path, score: similarityScore })
+                })
+                resultArray.sort((a, b) => b.score - a.score);
+                return resultArray.slice(0, 100)
+            }
+            function showIcon(searchName) {
+                let results = findIcon(searchName);
+                let resultString = "";
+                results.forEach((result, index) => {
+                    if (result.score > 0.2) resultString += `<img src="${result.path}" title="${result.name} (certainty: ${(result.score * 100).toFixed(2)}%)">`
+                })
+                document.querySelector("#rawr").innerHTML = resultString || "3:";
+            }
+            fetchIcons();
+        </script>
+    </head>
+    <body>
+        <h1>pixel.vukky.net</h1>
+        <p>I got tired of searching for pixel icons online, so this is a simple search tool that combines various icon packs into one search.</p>
+        Type here: <input oninput="showIcon(this.value)"><br>
+        See here:<br>
+        <span id="rawr"></span>
+
+        <h2>Licensing</h2>
+        <p>This project uses icons from the following icon packs. As the project is not complete, please use inspect element to determine which pack your icon came from.<br>Please note that I am not affiliated with these websites.</p>
+        <ul>
+            <li><a href="https://p.yusukekamiyamane.com/">Fugue by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> (no-attribution license available for <a href="https://p.yusukekamiyamane.com/icons/license/">$69.95 USD</a>)</a></li>
+            <li><a href="https://p.yusukekamiyamane.com/">Diagona by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> (no-attribution license available for <a href="https://p.yusukekamiyamane.com/icons/license/">$9.95 USD</a>)</a></li>
+            <li><a href="https://www.fatcow.com/free-icons">"Farm-Fresh Web Icons" by FatCow</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/us/">CC BY 3.0 US</a></a></li>
+        </ul>
+    </body>
+</html>

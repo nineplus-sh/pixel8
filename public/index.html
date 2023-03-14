@@ -10,12 +10,12 @@
     </head>
     <body>
         <h1>pixel.vukky.net</h1>
-        <p>I got tired of searching for pixel icons online, so this is a simple search tool that combines various icon packs into one search.</p>
-        <p><b>Do not hotlink these icons. Please download them yourself.</b></p>
-        <img src="assets/icons/fatcow-16/report_magnify.png"> Search the library: <input oninput="showIcon(this.value)"><br><br>
-        <img src="assets/icons/fugue/eye--plus.png"> See your results: <span id="rawr"></span>
+        <p><img src="assets/icons/fugue/image-share.png" class="icon"> I got tired of searching for pixel icons online, so this is a simple search tool that combines various icon packs into one search.</p>
+        <p><b><img src="assets/icons/fatcow-16/image_link.png" class="icon"> Do not hotlink these icons. Please download them yourself.<br><img src="assets/icons/fatcow-16/emotion_shocked.png" class="icon"> Also, some icons may be offensive or inappropiate.</b></p>
+        <img src="assets/icons/fatcow-16/report_magnify.png" class="icon"> Search the library: <input id="search" value="Loading..." oninput="showIcon(this.value)" disabled><br><br>
+        <img src="assets/icons/fugue/eye--plus.png" class="icon"> See your results: <span id="rawr"></span>
 
-        <h2>Licensing</h2>
+        <h2><img src="assets/icons/fatcow-32/books.png" class="icon"> Licensing</h2>
         <p>This project uses icons from the following icon packs.<br>Please note that I am not affiliated with these websites.</p>
         <ul>
             <li><a href="https://p.yusukekamiyamane.com/">Fugue 3.5.6 by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> (no-attribution license available for <a href="https://p.yusukekamiyamane.com/icons/license/">$69.95 USD</a>)</a></li>
@@ -35,6 +35,8 @@
             let iconArray;
             async function fetchIcons() {
                 iconArray = await fetch("/assets/icons.json").then(res => res.json());
+                document.querySelector("#search").disabled = false;
+                document.querySelector("#search").value = "";
             }
             function findIcon(searchName) {
                 let resultArray = [];
@@ -52,8 +54,21 @@
                     if (result.score > 0.2) resultString += `<img class="icon" src="${result.path}" data-tippy-content="<img src='${result.path}' class='icon' width='32'> <b>${result.name}</b> (${result.pack})">`
                 })
                 document.querySelector("#rawr").innerHTML = resultString || "<i>No icon could be found for your search. Try being more specific, or search something similar.</i>";
+                tippy.hideAll();
             }
             fetchIcons();
+
+            window.addEventListener("keypress", function(e) {
+                if(document.querySelector("#search:focus")) return;
+                document.querySelector("#search").value += e.key;
+                document.querySelector("#search").focus();
+            })
+            window.addEventListener("keydown", function(e) {
+                if(document.querySelector("#search:focus")) return;
+                if(e.key == "Backspace") {
+                    document.querySelector("#search").focus();
+                }
+            })
         </script>
     </body>
 </html>

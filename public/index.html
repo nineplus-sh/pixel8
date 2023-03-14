@@ -2,14 +2,18 @@
 <html>
     <head>
         <title>pixel.vukky.net</title>
+        <style>
+            .icon {
+                image-rendering: pixelated;
+            }
+        </style>
     </head>
     <body>
         <h1>pixel.vukky.net</h1>
         <p>I got tired of searching for pixel icons online, so this is a simple search tool that combines various icon packs into one search.</p>
         <p><b>Do not hotlink these icons. Please download them yourself.</b></p>
-        Type here: <input oninput="showIcon(this.value)"><br>
-        See here:<br>
-        <span id="rawr"></span>
+        <img src="assets/icons/fatcow-16/report_magnify.png"> Search the library: <input oninput="showIcon(this.value)"><br><br>
+        <img src="assets/icons/fugue/eye--plus.png"> See your results: <span id="rawr"></span>
 
         <h2>Licensing</h2>
         <p>This project uses icons from the following icon packs.<br>Please note that I am not affiliated with these websites.</p>
@@ -45,7 +49,7 @@
                 let results = findIcon(searchName);
                 let resultString = "";
                 results.forEach((result, index) => {
-                    if (result.score > 0.2) resultString += `<img class="icon" src="${result.path}" data-tippy-content="<b>${result.name}</b> (${result.pack})">`
+                    if (result.score > 0.2) resultString += `<img class="icon" src="${result.path}" data-tippy-content="<img src='${result.path}' class='icon' width='32'> <b>${result.name}</b> (${result.pack})">`
                 })
                 document.querySelector("#rawr").innerHTML = resultString || "<i>No icon could be found for your search. Try being more specific, or search something similar.</i>";
             }

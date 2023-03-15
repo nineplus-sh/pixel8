@@ -10,5 +10,18 @@ async function getIcons() {
     const folders = fs.readdirSync("public/assets/icons");
 
     fs.writeFileSync("public/assets/icons.json", JSON.stringify({"packs": folders, "icons": parsedIcons}))
+
+    let AllCss = "";
+    let packCss = {};
+    parsedIcons.forEach(icon => {
+        if (!packCss[icon.pack]) packCss[icon.pack] = ``;
+        AllCss += `i.p8-${icon.pack}.p8-${icon.name} {content: url("https://cdn.jsdelivr.net/gh/vukkysoft/pixel8/public/${icon.path}");image-rendering: pixelated}`;
+        packCss[icon.pack] += `i.p8-${icon.pack}.p8-${icon.name} {content: url("https://cdn.jsdelivr.net/gh/vukkysoft/pixel8/public/${icon.path}");image-rendering: pixelated;}`;
+    })
+
+    fs.writeFileSync("public/assets/all.css", AllCss)
+    Object.keys(packCss).forEach(pack => {
+        fs.writeFileSync(`public/assets/${pack}.css`, packCss[pack])
+    })
 }
 getIcons();

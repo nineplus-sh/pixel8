@@ -19,9 +19,9 @@ async function getIcons() {
         packCss[icon.pack] += `i.p8-${icon.pack}.p8-${icon.name} {content: url("https://cdn.jsdelivr.net/gh/vukkysoft/pixel8/public/${icon.path}");image-rendering: pixelated;}`;
     })
 
-    fs.writeFileSync("public/assets/all.css", AllCss)
+    fs.writeFileSync("public/assets/css/all.css", AllCss)
     Object.keys(packCss).forEach(pack => {
-        fs.writeFileSync(`public/assets/${pack}.css`, packCss[pack])
+        fs.writeFileSync(`public/assets/css/${pack}.css`, packCss[pack])
     })
 }
 getIcons();

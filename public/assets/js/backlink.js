@@ -39,7 +39,7 @@ vukkyBacklinkStyle.innerHTML = `
     }
     @keyframes vb-superscale {
         from {
-            transform: scale(1);
+            transform: scale(1.5);
         }
         to {
             transform: scale(30);

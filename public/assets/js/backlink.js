@@ -117,8 +117,7 @@ function vukkyBacklinkHandler(e) {
             e.target.classList.add("vukkybacklinksuperscale");
             document.body.classList.add("vukkybacklinkbye");
             setTimeout(() => {
-                alert("The Vukkysite is not yet available. Try again later.")
-                document.location.reload();
+                document.location.href = "https://vukky.net/home"
             }, 500);
     }
 }

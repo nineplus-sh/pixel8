@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="robots" content="noindex">
         <style>
+            .logo {
+                image-rendering: pixelated;
+            }
             .icon {
                 image-rendering: pixelated;
                 cursor: pointer;
@@ -23,29 +26,49 @@
     <body>
         <script src="/assets/js/backlink.js"></script>
         
-        <h1><img src="assets/img/vukkery-trans.gif" width="32"> pixel8<small style="font-size: 12px;">.vukky.net</small></h1>
+        <h1><img src="assets/img/pixel8.png" class="logo"> pixel8<small style="font-size: 12px;">.vukky.net</small></h1>
         <p><i class="p8-fugue p8-block-share"></i> I got tired of searching for pixel icons online, so this is a simple search tool that combines various icon packs into one search.</p>
         <p><b><i class="p8-fatcow-16 p8-image_link"></i> Do not hotlink these icons. Please download them yourself.<br><i class="p8-fatcow-16 p8-emotion_shocked"></i> Also, some icons may be offensive or inappropiate.</b></p>
         <i class="p8-fatcow-16 p8-report_magnify"></i> Search the library: <input id="search" value="Loading..." oninput="showIcon(this.value)" disabled><br><br>
         <i class="p8-fugue p8-eye--arrow"></i> See your results: <span id="rawr"></span>
+
+        <h2><i class="p8-fatcow-32 p8-script_link"></i> Script</h2>
+        <p><i class="p8-fatcow-16 p8-html"></i> You can use the pixel8 script to automatically insert icons from HTML tags.<br><i class="p8-fugue p8-clipboard-block"></i> These tags can be copied by clicking on the icons you've searched for.<br><i class="p8-fatcow-16 p8-script_torn"></i> At this time, the script will not detect icons added after the page has loaded. You will need to use the <code>p8()</code> function to reload all icons.</p</p>
+        <p><b><i class="p8-fugue p8-creative-commons"></i> Please remember to follow the respective pack's license when using icons.</b></p>
+        <p><i class="p8-fugue p8-download-cloud"></i> To use the pixel8 script, place <textarea rows="1" cols="90"><script defer src="https://cdn.jsdelivr.net/gh/vukkysoft/pixel8/public/pixel8.js"></script></textarea> in your &lt;head&gt;.<br><i class="p8-fugue p8-tick"></i> Any &lt;i&gt; tags you've copied from pixel8 should load automatically after you have added the script.<br><i class="p8-fatcow-16 p8-internet_explorer"></i> It is not supported on very old browsers like IE and Chrome 44 or below. Please download icons manually if this is required.</p>
 
         <h2><i class="p8-fatcow-32 p8-books"></i> Licensing</h2>
         <p><i class="p8-fugue p8-folder-stamp"></i> This project uses icons from the following icon packs.<br><i class="p8-fugue p8-money--minus"></i> Please note that I am not affiliated with these websites.<br><b><i class="p8-fugue p8-creative-commons"></i> When you use an icon, you must follow a license below for the respective pack.</b></p>
         <ul>
             <li><i class="p8-fugue p8-creative-commons"></i><i class="p8-fatcow-16 p8-attribution"></i> <a href="https://p.yusukekamiyamane.com/">Fugue 3.5.6 by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> (no-attribution license available for <a href="https://p.yusukekamiyamane.com/icons/license/">$69.95 USD</a>)</li>
             <li><i class="p8-fugue p8-creative-commons"></i><i class="p8-fatcow-16 p8-attribution"></i> <a href="https://p.yusukekamiyamane.com/">Diagona 1.0.0 by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a> (no-attribution license available for <a href="https://p.yusukekamiyamane.com/icons/license/">$9.95 USD</a>)</li>
-            <li><i class="p8-fugue p8-creative-commons"></i><i class="p8-fatcow-16 p8-attribution"></i> <a href="https://www.fatcow.com/free-icons">"Farm-Fresh Web Icons" 3.9.2 by FatCow</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/us/">CC BY 3.0 US</a></a></li>
+            <li><i class="p8-fugue p8-creative-commons"></i><i class="p8-fatcow-16 p8-attribution"></i> <a href="https://www.fatcow.com/free-icons">"Farm-Fresh Web Icons" 3.9.2 by FatCow</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/us/">CC BY 3.0 US</a></li>
             <li><i class="p8-fugue p8-creative-commons"></i><i class="p8-fatcow-16 p8-attribution"></i> <a href="https://web.archive.org/web/20221129102416/http://www.famfamfam.com/lab/icons/silk/">Silk 1.3 by Mark James</a>, licensed under <a href="https://creativecommons.org/licenses/by/2.5/">CC BY 2.5</a> and <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
             <li><i class="p8-fugue p8-tick"></i> <a href="https://web.archive.org/web/20221123224916/http://www.famfamfam.com/lab/icons/mini/">Mini by Mark James</a>, no restrictions on use</li>
             <li><i class="p8-fugue p8-tick"></i> <a href="https://web.archive.org/web/20221130133606/http://www.famfamfam.com/lab/icons/flags/">Flags by Mark James</a>, no restrictions on use</li>
             <li><i class="p8-fugue p8-creative-commons"></i><i class="p8-fatcow-16 p8-attribution"></i> <a href="https://web.archive.org/web/20221224123303/http://www.famfamfam.com/lab/icons/mint/">Mint 1.0 by Mark James</a>, licensed under <a href="https://creativecommons.org/licenses/by/2.5/">CC BY 2.5</a></li>
             <li><i class="p8-fugue p8-creative-commons"></i><i class="p8-fatcow-16 p8-attribution"></i> <a href="https://github.com/damieng/silk-companion">Silk-Companion by Damien Guard</a>, based on Silk by Mark James, licensed under <a href="https://creativecommons.org/licenses/by/2.5/">CC BY 2.5</a> and <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
         </ul>
-
-        <h2><i class="p8-fatcow-32 p8-script_link"></i> Script</h2>
-        <p><i class="p8-fatcow-16 p8-html"></i> You can use the pixel8 script to automatically insert icons from HTML tags.<br><i class="p8-fugue p8-clipboard-block"></i> These tags can be copied by clicking on the icons you've searched for.<br><i class="p8-fatcow-16 p8-script_torn"></i> At this time, the script will not detect icons added after the page has loaded. You will need to use the <code>p8()</code> function to reload all icons.</p</p>
-        <p><b><i class="p8-fugue p8-creative-commons"></i> Please remember to follow the respective pack's license when using icons.</b></p>
-        <p><i class="p8-fugue p8-download-cloud"></i> To use the pixel8 script, place <textarea rows="1" cols="90"><script defer src="https://cdn.jsdelivr.net/gh/vukkysoft/pixel8/public/pixel8.js"></script></textarea> in your &lt;head&gt;.<br><i class="p8-fugue p8-tick"></i> Any &lt;i&gt; tags you've copied from pixel8 should load automatically after you have added the script.<br><i class="p8-fatcow-16 p8-internet_explorer"></i> It is not supported on very old browsers like IE and Chrome 44 or below. Please download icons manually if this is required.</p>
+        <h3><i class="p8-fatcow-16 p8-books"></i> pixel8 logo licensing</h3>
+        <p>If you are going to use the pixel8 logo somewhere, having this license information is required.<br>(You should probably do one line per pack instead of specifying every icon.)</p>
+        <ul>
+            <li><i class="p8-fugue-shadowless p8-smiley-sleep"></i> <b>smiley-sleep</b> from <a href="https://p.yusukekamiyamane.com/">Fugue 3.5.6 by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
+            <li><i class="p8-fugue-shadowless p8-wand-hat"></i> <b>wand-hat</b> from <a href="https://p.yusukekamiyamane.com/">Fugue 3.5.6 by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
+            <li><i class="p8-fatcow-16 p8-web_template_editor"></i> <b>web_template_editor</b> from <a href="https://www.fatcow.com/free-icons">"Farm-Fresh Web Icons" 3.9.2 by FatCow</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/us/">CC BY 3.0 US</a></li>
+            <li><i class="p8-fugue-shadowless p8-tick"></i> <b>tick</b> from <a href="https://p.yusukekamiyamane.com/">Fugue 3.5.6 by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
+            <li><i class="p8-fugue-shadowless p8-blue-document-flash-movie"></i> <b>blue-document-flash-movie</b> from <a href="https://p.yusukekamiyamane.com/">Fugue 3.5.6 by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
+            <li><i class="p8-fugue p8-brain--arrow"></i> <b>brain--arrow</b> from <a href="https://p.yusukekamiyamane.com/">Fugue 3.5.6 by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
+            <li><i class="p8-fatcow-16 p8-emotion_meaw"></i> <b>emotion_meaw</b> from <a href="https://www.fatcow.com/free-icons">"Farm-Fresh Web Icons" 3.9.2 by FatCow</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/us/">CC BY 3.0 US</a></li>
+            <li><i class="p8-fugue-shadowless p8-wallet--exclamation"></i> <b>wallet--exclamation</b> from <a href="https://p.yusukekamiyamane.com/">Fugue 3.5.6 by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
+            <li><i class="p8-fatcow-16 p8-emotion_sad"></i> <b>emotion_sad</b> from <a href="https://www.fatcow.com/free-icons">"Farm-Fresh Web Icons" 3.9.2 by FatCow</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/us/">CC BY 3.0 US</a></li>
+            <li><i class="p8-famfamfam-silk p8-money_add"></i> <b>money_add</b> from <a href="https://web.archive.org/web/20221129102416/http://www.famfamfam.com/lab/icons/silk/">Silk 1.3 by Mark James</a>, licensed under <a href="https://creativecommons.org/licenses/by/2.5/">CC BY 2.5</a> and <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
+            <li><i class="p8-fatcow-16 p8-dns_server"></i> <b>dns_server</b> from <a href="https://www.fatcow.com/free-icons">"Farm-Fresh Web Icons" 3.9.2 by FatCow</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/us/">CC BY 3.0 US</a></li>
+            <li><i class="p8-fatcow-16 p8-emotion_angry"></i> <b>emotion_angry</b> from <a href="https://www.fatcow.com/free-icons">"Farm-Fresh Web Icons" 3.9.2 by FatCow</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/us/">CC BY 3.0 US</a></li>
+            <li><i class="p8-fugue-shadowless p8-animal"></i> <b>animal</b> from <a href="https://p.yusukekamiyamane.com/">Fugue 3.5.6 by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
+            <li><i class="p8-fatcow-16 p8-emotion_love"></i> <b>emotion_love</b> from <a href="https://www.fatcow.com/free-icons">"Farm-Fresh Web Icons" 3.9.2 by FatCow</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/us/">CC BY 3.0 US</a></li>
+            <li><i class="p8-fugue-shadowless p8-script-smiley"></i> <b>script-smiley</b> from <a href="https://p.yusukekamiyamane.com/">Fugue 3.5.6 by Yusuke Kamiyamane</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
+        </ul>
+        
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="https://unpkg.com/tippy.js@6"></script>
         <script src="//unpkg.com/string-similarity/umd/string-similarity.min.js"></script>
